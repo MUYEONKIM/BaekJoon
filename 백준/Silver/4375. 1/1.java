@@ -1,27 +1,31 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 
 public class Main {
-    private void solution() throws Exception {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s = "";
-        StringBuilder answer = new StringBuilder();
-        while ((s=br.readLine()) != null) {
-            BigInteger n = new BigInteger(s);
-            BigInteger base = BigInteger.ZERO;
-            while(true) {
-                base = base.multiply(BigInteger.TEN).add(BigInteger.ONE);
-                if (base.mod(n).equals(BigInteger.ZERO)) {
-                    answer.append(base.toString().length()).append('\n');
+        StringBuilder sol = new StringBuilder();
+
+        while (((s=br.readLine()) != null) ) {
+            if(s.equals("1")) {
+                sol.append("1\n");
+                continue;
+            }
+
+            BigInteger prob = new BigInteger(s);
+            BigInteger num = BigInteger.ONE;
+            while (1==1) {
+                num = num.multiply(BigInteger.TEN).add(BigInteger.ONE);
+
+                if (num.remainder(prob).equals(BigInteger.ZERO)) {
+                    sol.append(num.toString().length()).append("\n");
                     break;
                 }
             }
-        }
-        System.out.print(answer);
-    }
+        } System.out.println(sol);
 
-    public static void main(String[] args) throws Exception {
-        new Main().solution();
     }
 }
